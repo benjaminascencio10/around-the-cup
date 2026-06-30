@@ -2,6 +2,7 @@
 
 import { ThemeProvider, BaseStyles } from '@primer/react'
 import { StyledComponentsRegistry } from './styled-components-registry'
+import { I18nProvider } from './site/i18n'
 
 /**
  * App-wide Primer providers. The theme attributes that the @primer/primitives
@@ -14,12 +15,14 @@ export function Providers({ children }: { children: React.ReactNode }) {
   return (
     <StyledComponentsRegistry>
       <ThemeProvider
-        colorMode="night"
+        colorMode="day"
         dayScheme="light"
         nightScheme="dark"
         preventSSRMismatch
       >
-        <BaseStyles>{children}</BaseStyles>
+        <BaseStyles>
+          <I18nProvider>{children}</I18nProvider>
+        </BaseStyles>
       </ThemeProvider>
     </StyledComponentsRegistry>
   )

@@ -3,8 +3,9 @@ import './globals.css'
 import { Providers } from '@/components/providers'
 
 export const metadata: Metadata = {
-  title: 'Primer Starter',
-  description: "A starter app built with GitHub's Primer design system.",
+  title: 'Around the Cup — Café, contenido y comunidad',
+  description:
+    'Around the Cup: creación de contenido, café de especialidad y comunidad alrededor de cada taza. Content creation, specialty coffee and community.',
 }
 
 export default function RootLayout({
@@ -14,8 +15,8 @@ export default function RootLayout({
 }) {
   return (
     <html
-      lang="en"
-      data-color-mode="dark"
+      lang="es"
+      data-color-mode="light"
       data-light-theme="light"
       data-dark-theme="dark"
       suppressHydrationWarning
