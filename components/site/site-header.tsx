@@ -49,9 +49,9 @@ export function SiteHeader() {
           >
             ☕
           </span>
-          <Heading as="span" variant="small" style={{ fontSize: 18 }}>
+          <span style={{ fontSize: 18, fontWeight: 600 }}>
             Around the Cup
-          </Heading>
+          </span>
         </Stack>
 
         <Stack
