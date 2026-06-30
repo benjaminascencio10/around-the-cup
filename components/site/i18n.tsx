@@ -196,7 +196,7 @@ export const dictionary = {
 type I18nContextValue = {
   lang: Lang
   setLang: (l: Lang) => void
-  t: Dict['es']
+  t: Dict[Lang]
 }
 
 const I18nContext = createContext<I18nContextValue | null>(null)
