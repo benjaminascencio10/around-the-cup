@@ -33,7 +33,7 @@ export function SiteFooter() {
 
         <Stack direction="horizontal" gap="normal" align="center">
           <a
-            href="https://instagram.com/aroundthecup"
+            href="https://instagram.com/Around_thecup"
             target="_blank"
             rel="noopener noreferrer"
             aria-label="Instagram"

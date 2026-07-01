@@ -5,7 +5,7 @@ import { LinkExternalIcon } from '@primer/octicons-react'
 import { InstagramIcon, TikTokIcon } from './brand-icons'
 import { useI18n } from './i18n'
 
-const INSTAGRAM_URL = 'https://instagram.com/aroundthecup'
+const INSTAGRAM_URL = 'https://instagram.com/Around_thecup'
 const TIKTOK_URL = 'https://tiktok.com/@aroundthecup'
 
 export function Social() {
@@ -43,7 +43,7 @@ export function Social() {
         >
           <SocialCard
             label="Instagram"
-            handle="@aroundthecup"
+            handle="@Around_thecup"
             href={INSTAGRAM_URL}
             cta={t.social.instagram}
             icon={<InstagramIcon size={26} />}
