@@ -13,6 +13,8 @@ import {
 } from '@primer/react'
 import { useI18n } from './i18n'
 
+const CONTACT_EMAIL = 'aroundthecuprgv@gmail.com'
+
 export function Contact() {
   const { t } = useI18n()
   const [name, setName] = useState('')
@@ -75,6 +77,22 @@ export function Contact() {
           >
             {t.contact.subtitle}
           </Text>
+
+          <Stack direction="vertical" gap="none" style={{ paddingTop: 16 }}>
+            <Text size="small" style={{ color: 'var(--fgColor-muted)' }}>
+              {t.contact.directCta}
+            </Text>
+            <a
+              href={`mailto:${CONTACT_EMAIL}`}
+              style={{
+                color: 'var(--fgColor-accent)',
+                fontWeight: 600,
+                textDecoration: 'none',
+              }}
+            >
+              {CONTACT_EMAIL}
+            </a>
+          </Stack>
         </Stack>
 
         <div
