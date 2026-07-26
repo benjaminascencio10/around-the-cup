@@ -13,13 +13,40 @@ import {
 } from '@primer/react'
 import { useI18n } from './i18n'
 
+const CONTACT_EMAIL = 'aroundthecuprgv@gmail.com'
+
 export function Contact() {
   const { t } = useI18n()
+  const [name, setName] = useState('')
+  const [email, setEmail] = useState('')
+  const [message, setMessage] = useState('')
+  const [sending, setSending] = useState(false)
   const [sent, setSent] = useState(false)
+  const [error, setError] = useState(false)
 
-  function handleSubmit(e: React.FormEvent) {
+  async function handleSubmit(e: React.FormEvent) {
     e.preventDefault()
-    setSent(true)
+    setSending(true)
+    setError(false)
+
+    try {
+      const res = await fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ name, email, message }),
+      })
+
+      if (!res.ok) throw new Error('Request failed')
+
+      setSent(true)
+      setName('')
+      setEmail('')
+      setMessage('')
+    } catch {
+      setError(true)
+    } finally {
+      setSending(false)
+    }
   }
 
   return (
@@ -50,6 +77,22 @@ export function Contact() {
           >
             {t.contact.subtitle}
           </Text>
+
+          <Stack direction="vertical" gap="none" style={{ paddingTop: 16 }}>
+            <Text size="small" style={{ color: 'var(--fgColor-muted)' }}>
+              {t.contact.directCta}
+            </Text>
+            <a
+              href={`mailto:${CONTACT_EMAIL}`}
+              style={{
+                color: 'var(--fgColor-accent)',
+                fontWeight: 600,
+                textDecoration: 'none',
+              }}
+            >
+              {CONTACT_EMAIL}
+            </a>
+          </Stack>
         </Stack>
 
         <div
@@ -65,10 +108,18 @@ export function Contact() {
               {sent ? (
                 <Flash variant="success">{t.contact.success}</Flash>
               ) : null}
+              {error ? (
+                <Flash variant="danger">{t.contact.error}</Flash>
+              ) : null}
 
               <FormControl required>
                 <FormControl.Label>{t.contact.name}</FormControl.Label>
-                <TextInput block placeholder="Jane Doe" />
+                <TextInput
+                  block
+                  placeholder="Jane Doe"
+                  value={name}
+                  onChange={(e) => setName(e.target.value)}
+                />
               </FormControl>
 
               <FormControl required>
@@ -77,6 +128,8 @@ export function Contact() {
                   block
                   type="email"
                   placeholder="hola@email.com"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
                 />
               </FormControl>
 
@@ -87,11 +140,19 @@ export function Contact() {
                   rows={4}
                   resize="vertical"
                   placeholder={t.contact.messagePlaceholder}
+                  value={message}
+                  onChange={(e) => setMessage(e.target.value)}
                 />
               </FormControl>
 
-              <Button type="submit" variant="primary" block size="large">
-                {t.contact.send}
+              <Button
+                type="submit"
+                variant="primary"
+                block
+                size="large"
+                disabled={sending}
+              >
+                {sending ? t.contact.sending : t.contact.send}
               </Button>
             </Stack>
           </form>

@@ -24,6 +24,17 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
 
 You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
 
+## Contact form
+
+The contact form on the homepage sends its messages to `aroundthecuprgv@gmail.com` via `app/api/contact/route.ts`, using Gmail SMTP through [Nodemailer](https://nodemailer.com).
+
+To enable it, copy `.env.example` to `.env.local` and set:
+
+- `CONTACT_EMAIL_USER` — the Gmail address used to send the mail (defaults to `aroundthecuprgv@gmail.com`).
+- `CONTACT_EMAIL_APP_PASSWORD` — an [App Password](https://myaccount.google.com/apppasswords) for that account (requires 2-Step Verification to be enabled on the Google account).
+
+Set the same variables in your deployment platform (e.g. Vercel project settings) for the form to work in production.
+
 ## Learn More
 
 To learn more, take a look at the following resources:
