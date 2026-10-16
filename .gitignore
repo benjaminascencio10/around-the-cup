@@ -13,3 +13,19 @@ __v0_jsx-dev-runtime.ts
 node_modules
 .next/
 .DS_Store
+# --- Blindaje de secretos (auditoria 2026-10-15) ---
+.env
+.env.*
+!.env.example
+!.env.*.example
+!*.env.example
+*.pem
+*.key
+*.p12
+*.pfx
+credentials.json
+service-account*.json
+*-service-account.json
+id_rsa
+id_rsa.*
+
